@@ -12,6 +12,40 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    List<Map> dataList = [
+      {
+        "img":
+            "https://images.pexels.com/photos/20051297/pexels-photo-20051297/free-photo-of-healthy-salad-on-blue-plate.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "title": "Avocada Salad",
+        "title2": "20min",
+        "title3": "4.3",
+        "title4": "\$12.00"
+      },
+      {
+        "img":
+            "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg",
+        "title": "Fruit Salad",
+        "title2": "20min",
+        "title3": "5.3",
+        "title4": "\$22.00"
+      },
+      {
+        "img":
+            "https://images.pexels.com/photos/7469439/pexels-photo-7469439.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "title": "vegetable Salad",
+        "title2": "20min",
+        "title3": "4.5",
+        "title4": "\$16.00"
+      },
+      {
+        "img":
+            "https://images.pexels.com/photos/20053676/pexels-photo-20053676/free-photo-of-cake-with-cream-and-strawberry.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "title": "strawberry Salad",
+        "title2": "20min",
+        "title3": "4.1",
+        "title4": "\$15.00"
+      }
+    ];
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -204,6 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               Expanded(
                   child: GridView.builder(
+                itemCount: dataList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
@@ -229,12 +264,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       CircleAvatar(
                         radius: 60,
-                        backgroundImage: NetworkImage(
-                            "https://images.pexels.com/photos/4198024/pexels-photo-4198024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                        backgroundImage: NetworkImage(dataList[index]["img"]),
                         backgroundColor: Colors.purple,
                       ),
                       Text(
-                        "Avocado Salad",
+                        dataList[index]["title"],
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -245,11 +279,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "20min",
+                            dataList[index]["title2"],
                             style: TextStyle(color: Colors.grey, fontSize: 17),
                           ),
                           Text(
-                            "4.5",
+                            dataList[index]["title3"],
                             style: TextStyle(color: Colors.grey, fontSize: 17),
                           )
                         ],
@@ -263,7 +297,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: const EdgeInsets.only(left: 13),
                             child: Text(
-                              "\$12.00",
+                              dataList[index]["title4"],
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
